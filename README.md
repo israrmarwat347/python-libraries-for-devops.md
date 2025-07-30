@@ -1,3 +1,46 @@
+# 8 Python Libraries Every DevOps Engineer Should Know
+
+As a DevOps Engineer, automation and integration are part of your daily life. Python, being one of the most flexible scripting languages, offers a wide range of libraries that can make your job easier, faster, and more reliable.
+
+In this video, we'll explore **8 powerful Python libraries every DevOps Engineer should know** — along with **practical examples** for each.
+
+---
+
+## 1. `boto3` – AWS SDK for Python
+
+**Why use it:** Automate AWS resource provisioning and management.
+
+**Use Case:** Automating EC2 instance creation, S3 bucket operations, or IAM user setup.
+
+**Example:**
+
+```
+import boto3
+
+ec2 = boto3.client('ec2')
+response = ec2.describe_instances()
+for reservation in response['Reservations']:
+    for instance in reservation['Instances']:
+        print(f"Instance ID: {instance['InstanceId']}")
+```
+
+---
+
+## 2. `paramiko` – SSH Automation
+
+**Why use it:** Execute remote commands securely over SSH.
+
+**Use Case:** Automate server management tasks like updates, log checks, and reboots.
+
+**Example:**
+
+```
+import paramiko
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect('192.168.1.10', username='devops', password='secret')
+
 stdin, stdout, stderr = ssh.exec_command('uptime')
 print(stdout.read().decode())
 
